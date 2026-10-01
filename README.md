@@ -14,12 +14,8 @@ A full-stack sentiment analysis application designed for analyzing notes, review
 
 ```mermaid
 flowchart LR
-    subgraph Client["Frontend (Port: 5173)"]
-        UI["React 19 + Vite UI"]
-    end
-
-    subgraph Backend["Backend Gateway / Notes API (Port: 8080)"]
-        NotesAPI["Spring Boot Notes Service"]
+    subgraph Client["Frontend (Port: 3000)"]
+        UI["React 19 + Vite UI\n(NeuroSense)"]
     end
 
     subgraph MLService["ML Microservice (Port: 8000)"]
@@ -27,10 +23,8 @@ flowchart LR
         Model["Sentiment Classifier\n(model.py)"]
     end
 
-    UI -->|"POST /notes"| NotesAPI
-    NotesAPI -->|"POST /predict"| FastAPI
+    UI -->|"POST /predict"| FastAPI
     FastAPI --> Model
-    UI -.->|"Direct Fallback (POST /predict)"| FastAPI
 ```
 
 ---
@@ -46,7 +40,8 @@ Sentiment-Analysis/
 │   ├── public/              # Static assets and icons
 │   ├── src/                 # Application source code
 │   │   ├── api.js           # API request layer with configurable endpoint
-│   │   ├── App.jsx          # Notes Sentiment Analyzer main UI component
+│   │   ├── App.jsx          # NeuroSense main UI component
+│   │   ├── App.css          # Beautiful Glassmorphism UI styling
 │   │   ├── index.css        # Theme variables and global stylesheet
 │   │   └── main.jsx         # React application entry point
 │   ├── .gitignore           # Frontend-specific ignore rules
@@ -111,22 +106,19 @@ npm install
 npm run dev
 ```
 
-- **Web App**: [http://localhost:5173](http://localhost:5173)
+- **Web App**: [http://localhost:3000](http://localhost:3000)
 
 ---
 
 ## ⚙️ Configuration & Environment Variables
 
 ### Frontend Configuration (`frontend/.env`)
-By default, the frontend sends note requests to `http://localhost:8080/notes` (matching the companion Spring Boot Notes API).
+By default, the frontend sends note requests directly to `http://localhost:8000/predict`.
 
-You can easily redirect it to another URL or directly to the FastAPI service by setting `VITE_API_URL`:
+You can easily redirect it to another URL by setting `VITE_API_URL`:
 
 ```env
-# Point to custom backend
-VITE_API_URL=http://localhost:8080/notes
-
-# Or point directly to the ML service
+# Point directly to the ML service
 VITE_API_URL=http://localhost:8000/predict
 ```
 
