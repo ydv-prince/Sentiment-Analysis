@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080/notes";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/predict";
 
 export async function createNote(text) {
   const response = await fetch(API_URL, {
