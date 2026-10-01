@@ -1,13 +1,14 @@
-# Sentiment Analysis - Frontend
+# NeuroSense - AI-Powered Sentiment Intelligence (Frontend)
 
 Modern React application built with Vite for real-time sentiment analysis and note evaluation.
 
 ## 🚀 Features
 
 - **Interactive Note Input**: Analyze feedback, reviews, and notes on the fly.
+- **Premium Glassmorphism UI**: Beautiful, modern aesthetic with rich gradients and micro-animations.
 - **Visual Sentiment Badges**: Color-coded feedback (`positive` in green, `negative` in red, `neutral` in amber).
 - **Responsive & Lightweight**: Built with React 19 and Vite for lightning-fast HMR and bundle performance.
-- **Configurable Backend Connection**: Works seamlessly with Spring Boot Notes API or direct ML service.
+- **Configurable Backend Connection**: Works seamlessly with FastAPI ML service.
 
 ---
 
@@ -16,7 +17,7 @@ Modern React application built with Vite for real-time sentiment analysis and no
 - **Framework**: [React 19](https://react.dev/)
 - **Bundler & Dev Server**: [Vite](https://vitejs.dev/)
 - **Language**: JavaScript (ES Modules)
-- **Styling**: Modern CSS
+- **Styling**: Modern CSS (Glassmorphism design)
 
 ---
 
@@ -36,16 +37,10 @@ npm install
 
 ### 3. Environment Configuration (Optional)
 
-By default, the frontend sends requests to:
-`http://localhost:8080/notes`
+By default, the frontend sends requests directly to the ML service at:
+`http://localhost:8000/predict`
 
-If you want to customize the API URL (e.g., connect directly to the FastAPI service or a different backend), create a `.env` file in the `frontend` folder:
-
-```env
-VITE_API_URL=http://localhost:8080/notes
-```
-
-Or for direct FastAPI connection:
+If you want to customize the API URL, create a `.env` file in the `frontend` folder:
 
 ```env
 VITE_API_URL=http://localhost:8000/predict
@@ -57,7 +52,7 @@ VITE_API_URL=http://localhost:8000/predict
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open [http://localhost:3000](http://localhost:3000) or [http://localhost:5173](http://localhost:5173) in your browser.
 
 ### 5. Production Build
 
